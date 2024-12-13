@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,102 +7,70 @@
     <script>
         var carros = ['BMW', 'AUDI', 'MERCEDES'];
 
-        function menu() {
-            var x = prompt("Introduza o x = ");
-            var y = prompt("Introduza o y = ");
+        function menu()
+        {
+            var x = prompt("x = ");
+            var y = prompt("y = ");
             var soma = parseInt(x) + parseInt(y);
             var mensagem = document.getElementById("resultado").innerHTML;
             document.getElementById("resultado").innerHTML = mensagem + soma;
             document.getElementById("resultado").style.color = document.getElementById('cores').value;
         }
 
-        function menu2() {
+        function menu2()
+        {
             var x = prompt("Carro: ");
             document.getElementById("carros").innerHTML = carros[parseInt(x)];
         }
 
-        function muda_h2() {
+        function muda_h2()
+        {
             var lista = document.getElementsByTagName('h2');
-            lista[1].style.color = document.getElementById('cores').value;
-
-            for(let index = 0; index < lista.length; index++) {
+            for (let index = 0; index < lista.length; index++) 
+            {
                 lista[index].style.color = document.getElementById('cores').value;
             }
         }
 
-        function dias_mes() {
-            var meses = document.getElementById('meses');
-
-            switch (meses) {
-                case 1:
+        function meses() {
+            var mes = document.getElementById('meses').value;
+            switch (mes) {
+                case "jan":
+                case "mar":
+                case "mai":
+                case "jul":
+                case "ago":
+                case "out":
+                case "dez":
                     alert("31 dias");
                     break;
-
-                case 2:
+                case "fev":
                     alert("28 ou 29 dias");
                     break;
-
-                case 3:
-                    alert("31 dias");
-                    break;
-
-                case 4:
+                case "abr":
+                case "jun":
+                case "set":
+                case "nov":
                     alert("30 dias");
                     break;
-
-                case 5:
-                    alert("31 dias");
-                    break;
-
-                case 6:
-                    alert("30 dias");
-                    break;
-
-                case 7:
-                    alert("31 dias");
-                    break;
-
-                case 8:
-                    alert("31 dias");
-                    break;
-
-                case 9:
-                    alert("30 dias");
-                    break;
-
-                case 10:
-                    alert("31 dias");
-                    break;
-
-                case 11:
-                    alert("30 dias");
-                    break;
-
-                case 12:
-                    alert("31 dias");
-                    break;
-                
                 default:
                     break;
             }
-
         }
     </script>
 </head>
 
 <body>
-    <button onclick=menu()>Soma</button>
-
+    <button onclick = menu()>Soma</button>
     <select name="cores" id="cores" onchange="muda_h2()">
-        <option value="red">Vermelho</option>
-        <option value="blue">Azul</option>
-        <option value="green">Verde</option>
+        <option value = "red">Vermelho</optino>
+        <option value = "blue">Azul</option>
+        <option value = "green">Verde</option>
     </select>
-    
-    <button onclick=muda_h2()>Muda a cor</button>
+    <button onclick = muda_h2()>Muda a cor</button>
     <h1 id="resultado">Resultado: </h1>
 
-    <button onclick=menu2()>Carros</button>
+    <button onclick = menu2()>Carros</button>
     <h1 id="carros">Carros</h1>
     <h2>elemento1</h2>
     <h2>elemento2</h2>
@@ -111,20 +78,19 @@
     <h2>elemento4</h2>
 
     <select name="meses" id="meses">
-        <option value="1">Janeiro</option>
-        <option value="2">Fevereiro</option>
-        <option value="3">Março</option>
-        <option value="4">Abril</option>
-        <option value="5">Maio</option>
-        <option value="6">Junho</option>
-        <option value="7">Julho</option>
-        <option value="8">Agosto</option>
-        <option value="9">Setembro</option>
-        <option value="10">Outubro</option>
-        <option value="11">Novembro</option>
-        <option value="12">Dezembro</option>    
+        <option value = "jan">Janeiro</optino>
+        <option value = "fev">Fevereiro</option>
+        <option value = "mar">MarÃ§o</option>
+        <option value = "abr">Abril</option>
+        <option value = "mai">Maio</option>
+        <option value = "jun">Junho</option>
+        <option value = "jul">Julho</option>
+        <option value = "ago">Agosto</option>
+        <option value = "set">Setembro</option>
+        <option value = "out">Outubro</option>
+        <option value = "nov">Novembro</option>
+        <option value = "dez">Dezembro</option>
     </select>
-
+    <button onclick = meses()>Meses</button>
 </body>
-
 </html>
