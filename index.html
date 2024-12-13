@@ -5,19 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <script>
-        function menu() {
-            x = prompt("Introduza o x: ");
-            y = prompt("Introduza o y: ");
+        var carros = ['BMW', 'AUDI', 'MERCEDES'];
 
-            alert(parseInt(x) + parseInt(y));
+        function menu() {
+            var x = prompt("Introduza o x = ");
+            var y = prompt("Introduza o y = ");
+            var soma = parseInt(x) + parseInt(y);
+            var mensagem = document.getElementById("resultado").innerHTML;
+            document.getElementById("resultado").innerHTML = mensagem + soma;
+            document.getElementById("resultado").style.color = document.getElementById('cores').value;
+        }
+
+        function menu2() {
+            var x = prompt("Carro: ");
+            document.getElementById("carros").innerHTML = carros[parseInt(x)];
+        }
+
+        function muda_h2() {
+            var lista = document.getElementsByTagName('h2');
+            lista[1].style.color = document.getElementById('cores').value;
+
+            for(let index = 0; index < lista.length; index++) {
+                lista[index].style.color = document.getElementById('cores').value;
+            }
         }
     </script>
 </head>
 
 <body>
-    <button onclick=menu()> Clicar </button>
+    <button onclick=menu()>Soma</button>
+
+    <select name="cores" id="cores" onchange="muda_h2()">
+        <option value="red">Vermelho</optino>
+        <option value="blue">Azul</option>
+        <option value="green">Verde</option>
+    </select>
+    
+    <button onclick=muda_h2()>Muda a cor</button>
+    <h1 id="resultado">Resultado: </h1>
+
+    <button onclick=menu2()>Carros</button>
+    <h1 id="carros">Carros</h1>
+    <h2>elemento1</h2>
+    <h2>elemento2</h2>
+    <h2>elemento3</h2>
+    <h2>elemento4</h2>
+
 </body>
 
 </html>
