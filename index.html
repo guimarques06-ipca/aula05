@@ -5,92 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        var carros = ['BMW', 'AUDI', 'MERCEDES'];
+        var x=0;
+        var marcas=['BMW','AUDI',"MERCEDES"];
+        var modelos=['X1','Q3','CLA'];
+        var precos=[10000,5000,7500];
+        var stand=[ ['BMW','X1',10000],
+                    ['AUDI','Q3',5000],
+                    ['MERCEDES','CLA',7500]
+                    ]
 
-        function menu()
-        {
-            var x = prompt("x = ");
-            var y = prompt("y = ");
-            var soma = parseInt(x) + parseInt(y);
-            var mensagem = document.getElementById("resultado").innerHTML;
-            document.getElementById("resultado").innerHTML = mensagem + soma;
-            document.getElementById("resultado").style.color = document.getElementById('cores').value;
+        function menu(){
+            var x=prompt("x:");
+            var y=prompt("y:");
+            var soma=parseInt(x)+parseInt(y);
+            var mensagem= document.getElementById("resultado").innerHTML;    
+            document.getElementById("resultado").innerHTML=mensagem+soma;
+            document.getElementById("resultado").style.color=document.getElementById('cores').value;
         }
 
-        function menu2()
-        {
-            var x = prompt("Carro: ");
-            document.getElementById("carros").innerHTML = carros[parseInt(x)];
+        function menu2(){
+            var x=prompt("Carro:");
+            document.getElementById("carros").innerHTML=marcas[parseInt(x)]+modelos[parseInt(x)]+precos[parseInt(x)];
         }
 
-        function muda_h2()
-        {
-            var lista = document.getElementsByTagName('h2');
-            for (let index = 0; index < lista.length; index++) 
-            {
-                lista[index].style.color = document.getElementById('cores').value;
+        function muda_h2(){
+            var lista=document.getElementsByTagName('h2');
+            
+            lista[1].style.color=document.getElementById('cores').value;
+
+            for (let index = 0; index < lista.length; index++) {
+            lista[index].style.color=document.getElementById('cores').value;
             }
+
+        }
+        
+        function insere_linha(){
+            tabela=document.getElementById('tabela');
+            linha=tabela.insertRow(-1);
+            celula=linha.insertCell(-1);
+            x++;
+            celula.innerHTML=stand[x];
+        
         }
 
-        function meses() {
-            var mes = document.getElementById('meses').value;
-            switch (mes) {
-                case "jan":
-                case "mar":
-                case "mai":
-                case "jul":
-                case "ago":
-                case "out":
-                case "dez":
-                    alert("31 dias");
-                    break;
-                case "fev":
-                    alert("28 ou 29 dias");
-                    break;
-                case "abr":
-                case "jun":
-                case "set":
-                case "nov":
-                    alert("30 dias");
-                    break;
-                default:
-                    break;
-            }
-        }
     </script>
 </head>
-
 <body>
-    <button onclick = menu()>Soma</button>
+    <table style="border-style: dotted;" id="tabela">
+        <tr><th>Id</th>
+        </tr>
+    </table>
+
+    <button onclick="insere_linha()"> adicionar linha</button>
+
+    <button onclick="menu()"> Soma </button>
+    
     <select name="cores" id="cores" onchange="muda_h2()">
-        <option value = "red">Vermelho</optino>
-        <option value = "blue">Azul</option>
-        <option value = "green">Verde</option>
+        <option value="red">Vermelho</option>
+        <option value="blue">Azul</option>
+        <option value="green">Verde</option>
     </select>
-    <button onclick = muda_h2()>Muda a cor</button>
-    <h1 id="resultado">Resultado: </h1>
 
-    <button onclick = menu2()>Carros</button>
-    <h1 id="carros">Carros</h1>
-    <h2>elemento1</h2>
-    <h2>elemento2</h2>
-    <h2>elemento3</h2>
-    <h2>elemento4</h2>
+    <button onclick="muda_h2()"> Muda a cor </button>
 
-    <select name="meses" id="meses">
-        <option value = "jan">Janeiro</optino>
-        <option value = "fev">Fevereiro</option>
-        <option value = "mar">MarÃ§o</option>
-        <option value = "abr">Abril</option>
-        <option value = "mai">Maio</option>
-        <option value = "jun">Junho</option>
-        <option value = "jul">Julho</option>
-        <option value = "ago">Agosto</option>
-        <option value = "set">Setembro</option>
-        <option value = "out">Outubro</option>
-        <option value = "nov">Novembro</option>
-        <option value = "dez">Dezembro</option>
-    </select>
-    <button onclick = meses()>Meses</button>
+<h1 id="resultado">Resultado:</h1>
+<button onclick="menu2()">Carros </button>
+<h1 id="carros">Carros</h1>
+<h2>elemento1</h2>
+<h2>elemento2</h2>
+<h2>elemento3</h2>
+<h2>elemento4</h2>
+
 </body>
 </html>
